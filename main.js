@@ -15,7 +15,7 @@ let mainWindow;
 let serverProcess;
 
 /**
- * Periodically checks if the server at http://localhost:5000 is running.
+ * Periodically checks if the server at http://localhost:5001 is running.
  * Once a 200 response is received, it calls the callback function.
  * @param {number} port - The port on which the backend server is expected to listen.
  * @param {Function} callback - The function to call once the server is ready.
@@ -53,7 +53,7 @@ function createWindow() {
   });
 
   // Load the frontend from the backend server
-  mainWindow.loadURL('http://localhost:5000');
+  mainWindow.loadURL('http://localhost:5001');
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -119,7 +119,7 @@ if (!gotTheLock) {
     });
 
     // Wait for the backend server to be ready before creating the window
-    waitForServer(5000, createWindow);
+    waitForServer(5001, createWindow);
   });
 
   app.on('window-all-closed', () => {
@@ -144,4 +144,17 @@ if (!gotTheLock) {
     }
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -18,20 +18,23 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
+
+
 // Import routes
 import savingsRoutes from './routes/savings/index.js';
 app.use('/api/savings', savingsRoutes);
 
+
 // Connect to MongoDB
 const MONGODB_URI = process.env.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
 
@@ -47,3 +50,6 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 
 // Optional: Serve static files if needed (e.g., for frontend testing)
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+
+

@@ -51,6 +51,9 @@
     "directories": {
       "buildResources": "build"
     },
-    "asar": false
+    "asar": false,
+    "win": {
+      "target": "nsis"
+    }
   }
 }
