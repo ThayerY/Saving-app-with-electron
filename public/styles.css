@@ -13,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow-y: auto;
 }
 
 .container {
@@ -82,6 +83,7 @@ table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 th,
@@ -89,6 +91,10 @@ td {
   padding: 12px 15px;
   text-align: left;
   border: 1px solid #ddd;
+  vertical-align: middle;
+  word-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 th {
@@ -106,7 +112,6 @@ tr:nth-child(even) {
 #total-amount {
   font-size: 26px;
   font-weight: bold;
-  /* color: #333; */
   color: #1c04f7;
   margin-top: 20px;
   text-align: center;
@@ -145,6 +150,8 @@ td button {
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .delete-btn:hover {

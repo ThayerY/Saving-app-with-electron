@@ -41,7 +41,9 @@ export const fetchSavings = async () => {
     });
 
     // Update Total Amount Display
-    totalAmountEl.textContent = `Total Amount: ${runningTotal}`;
+    // totalAmountEl.textContent = `Total Amount: ${runningTotal}`;
+    totalAmountEl.textContent = `Total Amount: ${runningTotal.toLocaleString()}`;
+
 
     // Attach event listeners
     attachDeleteListeners();
