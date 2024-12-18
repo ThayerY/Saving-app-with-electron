@@ -1,46 +1,30 @@
+// import { apiUrl } from './config.js';
+// import { amountInputEl } from './domElements.js';
+// import { fetchSavings } from './fetchSavings.js';
 
-// export const subtractAmount = async (apiUrl, fetchSavings, amountInputEl, tableBodyEl, totalAmountEl, attachDeleteListeners) => {
+// export const subtractAmount = async () => {
 //   const amount = parseFloat(amountInputEl.value);
-
 //   if (isNaN(amount) || amount <= 0) {
-//     alert("Please enter a valid amount!");
+//     alert("Please enter a valid amount.");
 //     return;
 //   }
 
 //   try {
-//     const response = await fetch(apiUrl);
-//     const data = await response.json();
-//     const currentTotal = data.reduce((sum, saving) => sum + saving.amount, 0);
-
-//     if (currentTotal === 0) {
-//       alert("No amount available to subtract from.");
-//       return;
-//     }
-
-//     const postResponse = await fetch(apiUrl, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         amount: -amount,
-//         currentAmount: currentTotal,
-//         totalAmount: currentTotal - amount,
-//         date: new Date().toISOString().split("T")[0],
-//         today: new Date().toDateString(),
-//         time: new Date().toLocaleTimeString(),
-//       }),
+//     const response = await fetch(apiUrl, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ amount: -amount }),
 //     });
 
-//     if (postResponse.status === 201) {
-//       fetchSavings(apiUrl, tableBodyEl, totalAmountEl, attachDeleteListeners);
-//       amountInputEl.value = '';
+//     if (response.ok) {
+//       await fetchSavings();
+//       amountInputEl.value = "";
 //     } else {
 //       alert("Failed to subtract amount.");
 //     }
 //   } catch (error) {
-//     console.error("Error in subtractAmount:", error);
-//     alert("Failed to subtract amount.");
+//     console.error("Error subtracting amount:", error);
+//     alert("Error subtracting amount.");
 //   }
 // };
 
@@ -48,8 +32,11 @@
 
 
 
+
 //-------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------
+
+// added to this code comma seprate digits and the only allowd digits adding no letters
 
 
 import { apiUrl } from './config.js';
@@ -57,7 +44,10 @@ import { amountInputEl } from './domElements.js';
 import { fetchSavings } from './fetchSavings.js';
 
 export const subtractAmount = async () => {
-  const amount = parseFloat(amountInputEl.value);
+  // Remove commas before parsing
+  const rawValue = amountInputEl.value.replace(/,/g, '');
+  const amount = parseFloat(rawValue);
+
   if (isNaN(amount) || amount <= 0) {
     alert("Please enter a valid amount.");
     return;
@@ -67,7 +57,7 @@ export const subtractAmount = async () => {
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: -amount }),
+      body: JSON.stringify({ amount: -amount }), // sending a negative amount for subtraction
     });
 
     if (response.ok) {

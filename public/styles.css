@@ -147,7 +147,7 @@ td button {
   /* Red background */
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 4px;
   cursor: pointer;
   border-radius: 4px;
   text-decoration: none;
@@ -157,6 +157,17 @@ td button {
 .delete-btn:hover {
   background-color: #ff1a1a;
 }
+
+/*
+th:last-child,
+td:last-child {
+  width: 150px;
+  /* Increase if needed */
+/* white-space: nowrap;
+  overflow: visible;
+}
+*/
+
 
 /* Responsive Styles */
 @media (max-width: 768px) {
