@@ -112,7 +112,8 @@ tr:nth-child(even) {
 #total-amount {
   font-size: 26px;
   font-weight: bold;
-  color: #1c04f7;
+  /* color: #1c04f7; */
+  color: #2f6a31;
   margin-top: 20px;
   text-align: center;
 }
@@ -224,4 +225,15 @@ td:last-child {
 
 .save-btn:hover {
   background-color: #45a049;
+}
+
+/* to make the adding amount green color and subtract red color*/
+.green {
+  color: #46a04a;
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+  font-weight: bold;
 }
